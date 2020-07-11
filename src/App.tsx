@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import firebase, { auth } from './firebase/firebase.utils'
+import firebase, { auth, createUserProfileDocument } from './firebase/firebase.utils'
+import User from './entities/user'
 
 import './App.css'
 
@@ -12,7 +13,7 @@ import SignInAndSignUpPage from './pages/sign-in-and-sign-up'
 interface Props {}
 
 interface State {
-  currentUser: firebase.User | null
+  currentUser: User | null
 }
 
 class App extends React.Component<Props, State> {
@@ -27,8 +28,25 @@ class App extends React.Component<Props, State> {
   }
 
   componentDidMount () {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({ currentUser: user })
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth)
+        
+        userRef?.onSnapshot(snapShot => {
+          const data = snapShot.data() as User
+
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              displayName: data.displayName,
+              email: data.email,
+              createdAt: data.createdAt
+            }
+          }, () => console.log(this.state))
+        })
+      } else {
+        this.setState({ currentUser: userAuth })
+      }
     })
   }
 
