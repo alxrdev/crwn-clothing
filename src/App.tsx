@@ -1,31 +1,28 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import firebase, { auth, createUserProfileDocument } from './firebase/firebase.utils'
-import User from './entities/user'
 
-import './App.css'
+import { Dispatch } from 'redux'
+import { connect } from 'react-redux'
+import { setCurrentUser } from './redux/user/actions'
+import { UserActionTypes } from './redux/user/types'
+import { User } from './redux/user/data'
 
 import Header from './components/header'
 import HomePage from './pages/homepage'
 import ShopPage from './pages/shop'
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up'
 
-interface Props {}
+import './App.css'
 
-interface State {
-  currentUser: User | null
+interface Props {
+  setCurrentUser: (u: User | null) => UserActionTypes
 }
+
+interface State {}
 
 class App extends React.Component<Props, State> {
   private unsubscribeFromAuth: firebase.Unsubscribe | null = null
-
-  constructor (props: Props) {
-    super(props)
-
-    this.state = {
-      currentUser: null
-    }
-  }
 
   componentDidMount () {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -35,17 +32,15 @@ class App extends React.Component<Props, State> {
         userRef?.onSnapshot(snapShot => {
           const data = snapShot.data() as User
 
-          this.setState({
-            currentUser: {
-              id: snapShot.id,
-              displayName: data.displayName,
-              email: data.email,
-              createdAt: data.createdAt
-            }
-          }, () => console.log(this.state))
+          this.props.setCurrentUser({
+            id: snapShot.id,
+            displayName: data.displayName,
+            email: data.email,
+            createdAt: data.createdAt
+          })
         })
       } else {
-        this.setState({ currentUser: userAuth })
+        this.props.setCurrentUser(userAuth)
       }
     })
   }
@@ -57,7 +52,7 @@ class App extends React.Component<Props, State> {
   render () {
     return (
       <div>
-        <Header currentUser={this.state.currentUser} />
+        <Header/>
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
@@ -68,4 +63,8 @@ class App extends React.Component<Props, State> {
   }
 }
 
-export default App
+const mapDispatchToProps = (dispatch: Dispatch<UserActionTypes>) => ({
+  setCurrentUser: (user: User | null) => dispatch(setCurrentUser(user))
+})
+
+export default connect(null, mapDispatchToProps)(App)

@@ -1,10 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { auth } from '../../firebase/firebase.utils'
-import User from '../../entities/user'
 
 import './styles.scss'
 import Logo from '../../assets/crown.svg'
+
+import { connect } from 'react-redux'
+import { RootState } from '../../redux/root-reducer'
+import { User } from '../../redux/user/data'
 
 interface Props {
   currentUser: User | null
@@ -28,4 +31,8 @@ const Header: React.FC<Props> = ({ currentUser }) => (
   </div>
 )
 
-export default Header
+const mapStateToProps = (state: RootState) => ({
+  currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToProps)(Header)
