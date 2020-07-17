@@ -1,4 +1,4 @@
-import UserState from './state'
+import { UserState } from './data'
 import { SET_CURRENT_USER, UserActionTypes } from './types'
 
 const INITIAL_STATE: UserState = {

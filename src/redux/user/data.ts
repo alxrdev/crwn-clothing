@@ -4,3 +4,7 @@ export interface User {
   email: string
   createdAt: Date
 }
+
+export interface UserState {
+  currentUser: User | null
+}
