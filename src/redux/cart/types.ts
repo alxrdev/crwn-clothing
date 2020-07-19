@@ -1,3 +1,7 @@
+export interface CartState {
+  hidden: boolean
+}
+
 export const TOGGLE_CART_HIDDEN = 'TOGGLE_CART_HIDDEN'
 
 interface ToggleCartHidden {

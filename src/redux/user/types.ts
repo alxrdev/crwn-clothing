@@ -1,4 +1,13 @@
-import { User } from './data'
+export interface User {
+  id: string
+  displayName: string
+  email: string
+  createdAt: Date
+}
+
+export interface UserState {
+  currentUser: User | null
+}
 
 export const SET_CURRENT_USER = 'SET_CURRENT_USER'
 

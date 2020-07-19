@@ -4,7 +4,7 @@ import { auth } from '../../firebase/firebase.utils'
 
 import { connect } from 'react-redux'
 import { RootState } from '../../redux/root-reducer'
-import { User } from '../../redux/user/data'
+import { User } from '../../redux/user/types'
 
 import CartIcon from '../cart-icon'
 import CartDropdown from '../cart-dropdown'

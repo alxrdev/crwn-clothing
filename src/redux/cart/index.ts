@@ -1,5 +1,4 @@
-import { CartState } from './data'
-import { TOGGLE_CART_HIDDEN, CartActionTypes } from './types'
+import { CartState, TOGGLE_CART_HIDDEN, CartActionTypes } from './types'
 
 const INITIAL_STATE: CartState = {
   hidden: true

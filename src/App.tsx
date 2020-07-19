@@ -5,8 +5,7 @@ import firebase, { auth, createUserProfileDocument } from './firebase/firebase.u
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { setCurrentUser } from './redux/user/actions'
-import { UserActionTypes } from './redux/user/types'
-import { User } from './redux/user/data'
+import { User, UserActionTypes } from './redux/user/types'
 
 import Header from './components/header'
 import HomePage from './pages/homepage'

@@ -1,5 +1,4 @@
-import { User } from './data'
-import { SET_CURRENT_USER, UserActionTypes } from './types'
+import { User, SET_CURRENT_USER, UserActionTypes } from './types'
 
 export function setCurrentUser(newUser: User | null): UserActionTypes {
   return {
