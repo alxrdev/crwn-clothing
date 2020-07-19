@@ -1,17 +1,14 @@
 import React from 'react'
 
-import './styles.scss'
+import { Item } from '../../redux/cart/types'
 
 import CollectionItem from '../collection-item'
 
+import './styles.scss'
+
 interface Props {
   title: string
-  items: Array<{
-    id: number
-    name: string
-    imageUrl: string
-    price: number
-  }>
+  items: Array<Item>
 }
 
 const CollectionPreview: React.FC<Props> = ({ title, items }) => (
@@ -20,8 +17,8 @@ const CollectionPreview: React.FC<Props> = ({ title, items }) => (
     <div className='preview'>
       {items
         .filter((item, index) => index < 4)
-        .map(({ ...itemProps }) => (
-        <CollectionItem key={itemProps.id} {...itemProps} />
+        .map(item => (
+        <CollectionItem key={item.id} item={item} />
       ))}
     </div>
   </div>
