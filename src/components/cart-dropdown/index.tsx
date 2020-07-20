@@ -3,6 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { RootState } from '../../redux/root-reducer'
 import { CartItem } from '../../redux/cart/types'
+import { selectCartItems } from '../../redux/cart/selectors'
 
 import CustomButtom from '../custom-button'
 import CartItemComponent from '../cart-item'
@@ -23,7 +24,7 @@ const CartDropdown: React.FC<Props> = ({ cartItems }) => (
 )
 
 const mapStateToProps = (state: RootState) => ({
-  cartItems: state.cart.cartItems
+  cartItems: selectCartItems(state)
 })
 
 export default connect(mapStateToProps)(CartDropdown)
