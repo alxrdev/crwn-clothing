@@ -1,11 +1,14 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
+
 import firebase, { auth, createUserProfileDocument } from './firebase/firebase.utils'
 
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { setCurrentUser } from './redux/user/actions'
 import { User, UserActionTypes } from './redux/user/types'
+
+import { selectCurrentUser } from './redux/user/selectors'
 
 import Header from './components/header'
 import HomePage from './pages/homepage'
@@ -73,8 +76,8 @@ class App extends React.Component<Props, State> {
   }
 }
 
-const mapStateToProps = ({ user }: RootState) => ({
-  currentUser: user.currentUser
+const mapStateToProps = (state: RootState) => ({
+  currentUser: selectCurrentUser(state)
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<UserActionTypes>) => ({
