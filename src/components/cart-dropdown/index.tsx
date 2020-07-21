@@ -1,8 +1,12 @@
 import React from 'react'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 
 import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 import { RootState } from '../../redux/root-reducer'
-import { CartItem } from '../../redux/cart/types'
+import { CartItem, CartActionTypes } from '../../redux/cart/types'
+import { toggleCartHidden } from '../../redux/cart/actions'
+
 import { selectCartItems } from '../../redux/cart/selectors'
 
 import CustomButtom from '../custom-button'
@@ -10,16 +14,24 @@ import CartItemComponent from '../cart-item'
 
 import './styles.scss'
 
-interface Props {
+interface Props extends RouteComponentProps {
   cartItems: Array<CartItem>
+  dispatch: Dispatch<CartActionTypes>
 }
 
-const CartDropdown: React.FC<Props> = ({ cartItems }) => (
+const CartDropdown: React.FC<Props> = ({ cartItems, history, dispatch }) => (
   <div className='cart-dropdown'>
     <div className='cart-items'>
-      {cartItems.map(cartItem => <CartItemComponent key={cartItem.item.id} cartItem={cartItem} />)}
+      {cartItems.length ? (
+        cartItems.map(cartItem => <CartItemComponent key={cartItem.item.id} cartItem={cartItem} />)
+      ) : (
+        <span className='empty-message'>Your cart is empty</span>
+      )}
     </div>
-    <CustomButtom>GO TO CHECKOUT</CustomButtom>
+    <CustomButtom onClick={() => {
+      history.push('/checkout')
+      dispatch(toggleCartHidden())
+    }}>GO TO CHECKOUT</CustomButtom>
   </div>
 )
 
@@ -27,4 +39,4 @@ const mapStateToProps = (state: RootState) => ({
   cartItems: selectCartItems(state)
 })
 
-export default connect(mapStateToProps)(CartDropdown)
+export default withRouter(connect(mapStateToProps)(CartDropdown))

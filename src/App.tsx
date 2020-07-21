@@ -11,9 +11,11 @@ import { User, UserActionTypes } from './redux/user/types'
 import { selectCurrentUser } from './redux/user/selectors'
 
 import Header from './components/header'
+
 import HomePage from './pages/homepage'
 import ShopPage from './pages/shop'
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up'
+import CheckoutPage from './pages/checkout'
 
 import './App.css'
 import { RootState } from './redux/root-reducer'
@@ -60,6 +62,7 @@ class App extends React.Component<Props, State> {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
+          <Route exact path='/checkout' component={CheckoutPage} />
           <Route
             exact
             path='/signin'
