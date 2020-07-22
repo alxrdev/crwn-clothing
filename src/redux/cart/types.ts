@@ -17,6 +17,8 @@ export interface CartState {
 
 export const TOGGLE_CART_HIDDEN = 'TOGGLE_CART_HIDDEN'
 export const ADD_ITEM = 'ADD_ITEM'
+export const CLEAR_ITEM_FROM_CART = 'CLEAR_ITEM_FROM_CART'
+export const REMOVE_ITEM = 'REMOVE_ITEM'
 
 interface ToggleCartHidden {
   type: typeof TOGGLE_CART_HIDDEN
@@ -27,4 +29,14 @@ interface AddItem {
   payload: Item
 }
 
-export type CartActionTypes = ToggleCartHidden | AddItem
+interface ClearItemFromCart {
+  type: typeof CLEAR_ITEM_FROM_CART
+  payload: Item
+}
+
+interface RemoveItem {
+  type: typeof REMOVE_ITEM
+  payload: Item
+}
+
+export type CartActionTypes = ToggleCartHidden | AddItem | ClearItemFromCart | RemoveItem

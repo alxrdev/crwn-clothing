@@ -9,3 +9,22 @@ export const addItemToCart = (cartItems: Array<CartItem>, itemToAdd: Item) : Arr
 
   return [...cartItems, {item: itemToAdd, quantity: 1}]
 }
+
+export const removeItemFromCart = (cartItems: Array<CartItem>, itemToRemove: Item) => {
+  const existingCartItem = cartItems.find(
+    cartItem => cartItem.item.id === itemToRemove.id
+  )
+
+  if (existingCartItem?.quantity === 1) {
+    return cartItems.filter(cartItem => cartItem.item.id !== itemToRemove.id)
+  }
+
+  return cartItems.map(cartItem => (cartItem.item.id === itemToRemove.id) ?
+    {
+      ...cartItem,
+      quantity: cartItem.quantity - 1
+    } : {
+      ...cartItem
+    }
+  )
+}
