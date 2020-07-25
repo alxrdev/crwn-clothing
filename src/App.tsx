@@ -5,6 +5,7 @@ import firebase, { auth, createUserProfileDocument } from './firebase/firebase.u
 
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
+import { RootState } from './redux/root-reducer'
 import { setCurrentUser } from './redux/user/actions'
 import { User, UserActionTypes } from './redux/user/types'
 
@@ -18,7 +19,6 @@ import SignInAndSignUpPage from './pages/sign-in-and-sign-up'
 import CheckoutPage from './pages/checkout'
 
 import './App.css'
-import { RootState } from './redux/root-reducer'
 
 interface Props {
   setCurrentUser: (u: User | null) => UserActionTypes
