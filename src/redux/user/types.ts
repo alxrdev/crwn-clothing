@@ -1,9 +1,4 @@
-export interface User {
-  id: string
-  displayName: string
-  email: string
-  createdAt: Date
-}
+import { User } from '../types'
 
 export interface UserState {
   currentUser: User | null

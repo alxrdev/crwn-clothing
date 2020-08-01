@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Item } from '../../redux/cart/types'
+import { Item } from '../../redux/types'
 
 import CollectionItem from '../collection-item'
 

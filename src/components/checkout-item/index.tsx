@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import { clearItemFromCart, addItem, removeItem } from '../../redux/cart/actions'
 
-import { Item, CartItem, CartActionTypes } from '../../redux/cart/types'
+import { Item } from '../../redux/types'
+import { CartItem, CartActionTypes } from '../../redux/cart/types'
 
 import './styles.scss'
 

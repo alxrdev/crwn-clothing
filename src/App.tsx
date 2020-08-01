@@ -6,8 +6,9 @@ import firebase, { auth, createUserProfileDocument } from './firebase/firebase.u
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { RootState } from './redux/root-reducer'
+import { User } from './redux/types'
 import { setCurrentUser } from './redux/user/actions'
-import { User, UserActionTypes } from './redux/user/types'
+import { UserActionTypes } from './redux/user/types'
 
 import { selectCurrentUser } from './redux/user/selectors'
 

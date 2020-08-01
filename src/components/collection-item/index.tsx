@@ -2,7 +2,8 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import { Item, CartActionTypes } from '../../redux/cart/types'
+import { Item } from '../../redux/types'
+import { CartActionTypes } from '../../redux/cart/types'
 import { addItem } from '../../redux/cart/actions'
 
 import CustomButton from '../custom-button'

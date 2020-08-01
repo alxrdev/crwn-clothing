@@ -5,7 +5,7 @@ import { auth } from '../../firebase/firebase.utils'
 
 import { connect } from 'react-redux'
 import { RootState } from '../../redux/root-reducer'
-import { User } from '../../redux/user/types'
+import { User } from '../../redux/types'
 
 import { createStructuredSelector } from 'reselect'
 import { selectCartHidden } from '../../redux/cart/selectors'

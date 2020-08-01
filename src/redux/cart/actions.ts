@@ -1,5 +1,5 @@
+import { Item } from '../types'
 import {
-  Item,
   CartActionTypes,
   TOGGLE_CART_HIDDEN,
   ADD_ITEM,

@@ -1,9 +1,4 @@
-export interface Item {
-  id: number
-  name: string
-  imageUrl: string
-  price: number
-}
+import { Item } from '../types'
 
 export interface CartItem {
   item: Item

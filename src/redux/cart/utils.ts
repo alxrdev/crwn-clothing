@@ -1,4 +1,5 @@
-import { Item, CartItem } from './types'
+import { Item } from '../types'
+import { CartItem } from './types'
 
 export const addItemToCart = (cartItems: Array<CartItem>, itemToAdd: Item) : Array<CartItem> => {
   const existingCartItem = cartItems.find(cartItem => cartItem.item.id === itemToAdd.id)
