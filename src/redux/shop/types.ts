@@ -8,7 +8,7 @@ export interface Collection {
 }
 
 export interface ShopState {
-  collections: Array<Collection>
+  collections: { [key: string]: Collection }
 }
 
 export interface DefaultAction {
