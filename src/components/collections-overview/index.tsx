@@ -5,7 +5,7 @@ import { RootState } from '../../redux/root-reducer'
 import { Collection } from '../../redux/shop/types'
 
 import { createStructuredSelector } from 'reselect'
-import { selectShopCollections } from '../../redux/shop/selectors'
+import { selectCollectionsForPreview } from '../../redux/shop/selectors'
 
 import CollectionPreview from '../collection-preview'
 
@@ -24,7 +24,7 @@ const CollectionsOverview: React.FC<Props> = ({ collections }) => (
 )
 
 const mapStateToProps = createStructuredSelector<RootState, Props>({
-  collections: selectShopCollections
+  collections: selectCollectionsForPreview
 })
 
 export default connect(mapStateToProps)(CollectionsOverview)
