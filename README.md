@@ -31,7 +31,7 @@
 </br>
 
 <p align="center">
-  <img alt="Layout" src="https://i.imgur.com/1VD3Ond.gifv">
+  <img alt="Layout" src="https://i.imgur.com/1VD3Ond.gif">
 </p>
 
 ## 💇🏻‍♂️ About the project
