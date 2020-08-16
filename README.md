@@ -56,6 +56,7 @@ Technologies that I used to develop this project
 ### Requirements
 
 - Have NodeJS
+- Have a Firebase account
 
 **Clone the project and access the folder**
 
@@ -70,6 +71,19 @@ $ yarn
 
 # Start the client
 $ yarn start
+```
+
+**Create a '.env.local' file on the root folder and add your firebase configs**
+```
+
+REACT_APP_FIREBASE_API_KEY=
+REACT_APP_FIREBASE_AUTH_DOMAIN=
+REACT_APP_FIREBASE_DATABASE_URL=
+REACT_APP_FIREBASE_PROJECT_ID=
+REACT_APP_FIREBASE_STORAGE_BUCKET=
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=
+REACT_APP_FIREBASE_APP_ID=
+
 ```
 
 Feito com 💜 por Alex Rodrigues Moreira 👋 [Veja meu Linkedin](https://www.linkedin.com/in/alxrdev/)
