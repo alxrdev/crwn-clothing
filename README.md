@@ -1,4 +1,5 @@
 <h1 align="center">
+	<img alt="CRWN Clothing" src="https://raw.githubusercontent.com/alxrdev/crwn-clothing/master/src/assets/crown.svg" width="150px"><br>
 	CRWN Clothing
 </h1>
 
