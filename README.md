@@ -40,7 +40,7 @@ This is a simple e-commerce site made with ReactJS and Typescript.
 
 ## 🚀 Technologies
 
-Tecnologias utilizadas para desenvolver este plugin
+Technologies that I used to develop this project
 
 - [ReactJS](https://reactjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
