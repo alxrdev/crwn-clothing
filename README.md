@@ -38,6 +38,8 @@
 
 This is a simple e-commerce site made with ReactJS and Typescript.
 
+Live demo: [https://crwncstore.herokuapp.com/](https://crwncstore.herokuapp.com/)
+
 ## 🚀 Technologies
 
 Technologies that I used to develop this project
