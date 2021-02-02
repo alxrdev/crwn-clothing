@@ -4,7 +4,11 @@ import { Item } from '../../redux/types'
 
 import CollectionItem from '../collection-item'
 
-import './styles.scss'
+import {
+  CollectionPreviewContainer,
+  PreviewTitle,
+  PreviewContent
+} from './styles'
 
 interface Props {
   title: string
@@ -12,16 +16,16 @@ interface Props {
 }
 
 const CollectionPreview: React.FC<Props> = ({ title, items }) => (
-  <div className='collection-preview'>
-    <h1 className='title'>{title.toUpperCase()}</h1>
-    <div className='preview'>
+  <CollectionPreviewContainer>
+    <PreviewTitle>{title.toUpperCase()}</PreviewTitle>
+    <PreviewContent>
       {items
         .filter((item, index) => index < 4)
         .map(item => (
         <CollectionItem key={item.id} item={item} />
       ))}
-    </div>
-  </div>
+    </PreviewContent>
+  </CollectionPreviewContainer>
 )
 
 export default CollectionPreview
