@@ -9,10 +9,14 @@ import { toggleCartHidden } from '../../redux/cart/actions'
 
 import { selectCartItems } from '../../redux/cart/selectors'
 
-import CustomButtom from '../custom-button'
+import CustomButton from '../custom-button'
 import CartItemComponent from '../cart-item'
 
-import './styles.scss'
+import {
+  CartDropdownContainer,
+  CartItemsContainer,
+  EmptyMessage
+} from './styles'
 
 interface Props extends RouteComponentProps {
   cartItems: Array<CartItem>
@@ -20,19 +24,19 @@ interface Props extends RouteComponentProps {
 }
 
 const CartDropdown: React.FC<Props> = ({ cartItems, history, dispatch }) => (
-  <div className='cart-dropdown'>
-    <div className='cart-items'>
+  <CartDropdownContainer>
+    <CartItemsContainer>
       {cartItems.length ? (
         cartItems.map(cartItem => <CartItemComponent key={cartItem.item.id} cartItem={cartItem} />)
       ) : (
-        <span className='empty-message'>Your cart is empty</span>
+        <EmptyMessage>Your cart is empty</EmptyMessage>
       )}
-    </div>
-    <CustomButtom onClick={() => {
+    </CartItemsContainer>
+    <CustomButton onClick={() => {
       history.push('/checkout')
       dispatch(toggleCartHidden())
-    }}>GO TO CHECKOUT</CustomButtom>
-  </div>
+    }}>GO TO CHECKOUT</CustomButton>
+  </CartDropdownContainer>
 )
 
 const mapStateToProps = (state: RootState) => ({
