@@ -7,7 +7,17 @@ import { clearItemFromCart, addItem, removeItem } from '../../redux/cart/actions
 import { Item } from '../../redux/types'
 import { CartItem, CartActionTypes } from '../../redux/cart/types'
 
-import './styles.scss'
+import {
+  CheckoutItemContainer,
+  ImageContainer,
+  ItemImage,
+  ItemName,
+  ItemQuantity,
+  ItemQuantityArrow,
+  ItemQuantityValue,
+  ItemPrice,
+  RemoveButton
+} from './styles'
 
 interface Props {
   cartItem: CartItem
@@ -20,28 +30,25 @@ const CheckoutItem: React.FC<Props> = ({ cartItem, clearItem, addItem, removeIte
   const { item, quantity } = cartItem
 
   return (
-    <div className='checkout-item'>
-      <div className='image-container'>
-        <img src={item.imageUrl} alt={item.name} />
-      </div>
-      <span className='name'>{item.name}</span>
-      <span className='quantity'>
-        <div
-          className='arrow'
-          onClick={() => removeItem(item)}
-        >&#10094;</div>
-        <span className='value'>{quantity}</span>
-        <div
-          className='arrow'
-          onClick={() => addItem(item)}
-        >&#10095;</div>
-      </span>
-      <span className='price'>${item.price}</span>
-      <div
-        className='remove-button'
-        onClick={() => clearItem(item)}
-      >&#10005;</div>
-    </div>
+    <CheckoutItemContainer>
+      <ImageContainer>
+        <ItemImage src={item.imageUrl} alt={item.name} />
+      </ImageContainer>
+      <ItemName>{item.name}</ItemName>
+      <ItemQuantity>
+        <ItemQuantityArrow onClick={() => removeItem(item)}>
+          &#10094;
+        </ItemQuantityArrow>
+        <ItemQuantityValue>{quantity}</ItemQuantityValue>
+        <ItemQuantityArrow onClick={() => addItem(item)}>
+          &#10095;
+        </ItemQuantityArrow>
+      </ItemQuantity>
+      <ItemPrice>${item.price}</ItemPrice>
+      <RemoveButton onClick={() => clearItem(item)}>
+        &#10005;
+      </RemoveButton>
+    </CheckoutItemContainer>
   )
 }
 
