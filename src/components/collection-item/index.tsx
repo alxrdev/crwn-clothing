@@ -13,7 +13,8 @@ import {
   ItemImage,
   CollectionItemFooter,
   CollectionItemName,
-  CollectionItemPrice
+  CollectionItemPrice,
+  AddToCartButton
 } from './styles'
 
 interface Props {
@@ -32,12 +33,12 @@ const CollectionItem: React.FC<Props> = ({ item, addItem }) => {
         <CollectionItemPrice>{price}</CollectionItemPrice>
       </CollectionItemFooter>
       
-      <CustomButton
+      <AddToCartButton
         onClick={() => addItem(item)}
         inverted={true}
       >
         Add to cart
-      </CustomButton>
+      </AddToCartButton>
     </CollectionItemContainer>
   )
 }
