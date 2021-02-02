@@ -7,7 +7,11 @@ import { CartActionTypes } from '../../redux/cart/types'
 import { toggleCartHidden } from '../../redux/cart/actions'
 import { selectCartItemsCount } from '../../redux/cart/selectors'
 
-import './styles.scss'
+import {
+  CartIconContainer,
+  ShopIconImg,
+  ItemCount
+} from './styles'
 import shoppingIcon from '../../assets/shopping-bag.svg'
 
 interface Props {
@@ -16,10 +20,10 @@ interface Props {
 }
 
 const CartIcon: React.FC<Props> = ({ toggleCartHidden, itemCount }) => (
-  <div className='cart-icon' onClick={toggleCartHidden}>
-    <img src={shoppingIcon} alt='Cart' className='shopping-icon' />
-    <span className='item-count'>{itemCount}</span>
-  </div>
+  <CartIconContainer onClick={toggleCartHidden}>
+    <ShopIconImg src={shoppingIcon} alt='Cart' />
+    <ItemCount>{itemCount}</ItemCount>
+  </CartIconContainer>
 )
 
 const mapDispatchToProps = (dispatch: Dispatch<CartActionTypes>) => ({
