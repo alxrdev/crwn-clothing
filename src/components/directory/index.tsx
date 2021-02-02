@@ -9,7 +9,7 @@ import { selectDirectorySelctions } from '../../redux/directory/selectors'
 
 import MenuItem from '../menu-item'
 
-import './styles.scss'
+import { DirectoryMenuContainer } from './styles'
 
 interface Props {
   sections: Array<Section>
@@ -17,11 +17,11 @@ interface Props {
 
 const Directory: React.FC<Props> = ({ sections }) => {
   return (
-    <div className="directory-menu">
+    <DirectoryMenuContainer>
       {sections.map(({ title, imageUrl, id, size, linkUrl }) => (
         <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} linkUrl={linkUrl} />
       ))}
-    </div>
+    </DirectoryMenuContainer>
   )
 }
 
