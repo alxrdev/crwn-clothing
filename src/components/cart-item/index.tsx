@@ -2,20 +2,26 @@ import React from 'react'
 
 import { CartItem as CartItemEntity } from '../../redux/cart/types'
 
-import './styles.scss'
+import {
+  CartItemContainer,
+  CartItemImg,
+  ItemDetailsContainer,
+  ItemDetailsName,
+  ItemDetailsPrice
+} from './styles'
 
 interface Props {
   cartItem: CartItemEntity
 }
 
 const CartItem: React.FC<Props> = ({ cartItem: { item, quantity } }) => (
-  <div className='cart-item'>
-    <img src={item.imageUrl} alt='item' />
-    <div className='item-details'>
-      <span className='name'>{item.name}</span>
-      <span className='price'>{quantity} ${item.price}</span>
-    </div>
-  </div>
+  <CartItemContainer>
+    <CartItemImg src={item.imageUrl} alt='item' />
+    <ItemDetailsContainer>
+      <ItemDetailsName>{item.name}</ItemDetailsName>
+      <ItemDetailsPrice>{quantity} ${item.price}</ItemDetailsPrice>
+    </ItemDetailsContainer>
+  </CartItemContainer>
 )
 
 export default CartItem
