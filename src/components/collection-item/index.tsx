@@ -8,7 +8,13 @@ import { addItem } from '../../redux/cart/actions'
 
 import CustomButton from '../custom-button'
 
-import './styles.scss'
+import {
+  CollectionItemContainer,
+  ItemImage,
+  CollectionItemFooter,
+  CollectionItemName,
+  CollectionItemPrice
+} from './styles'
 
 interface Props {
   item: Item
@@ -19,15 +25,12 @@ const CollectionItem: React.FC<Props> = ({ item, addItem }) => {
   const { name, imageUrl, price } = item
 
   return (
-    <div className='collection-item'>
-      <div
-        className='image'
-        style={{backgroundImage: `url(${imageUrl})`}}
-      />
-      <div className='collection-footer'>
-        <span className='name'>{name}</span>
-        <span className='price'>{price}</span>
-      </div>
+    <CollectionItemContainer>
+      <ItemImage style={{backgroundImage: `url(${imageUrl})`}} />
+      <CollectionItemFooter>
+        <CollectionItemName>{name}</CollectionItemName>
+        <CollectionItemPrice>{price}</CollectionItemPrice>
+      </CollectionItemFooter>
       
       <CustomButton
         onClick={() => addItem(item)}
@@ -35,7 +38,7 @@ const CollectionItem: React.FC<Props> = ({ item, addItem }) => {
       >
         Add to cart
       </CustomButton>
-    </div>
+    </CollectionItemContainer>
   )
 }
 
