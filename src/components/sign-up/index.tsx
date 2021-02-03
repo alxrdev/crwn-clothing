@@ -2,9 +2,12 @@ import React, { ChangeEvent, FormEvent } from 'react'
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils'
 
 import FormInput from '../form-input'
-import CustomButtom from '../custom-button'
+import CustomButton from '../custom-button'
 
-import './styles.scss'
+import {
+  SignUpContainer,
+  Title
+} from './styles'
 
 interface Props {}
 
@@ -62,8 +65,8 @@ export default class SignUp extends React.Component<Props, State> {
     const { displayName, email, password, confirmPassword } = this.state
 
     return (
-      <div className='sign-up'>
-        <h2 className='title'>I do not have an account</h2>
+      <SignUpContainer>
+        <Title>I do not have an account</Title>
         <span>Sign up with your email and password</span>
 
         <form
@@ -106,9 +109,9 @@ export default class SignUp extends React.Component<Props, State> {
             required
           />
 
-          <CustomButtom type='submit'>SIGN UP</CustomButtom>
+          <CustomButton type='submit'>SIGN UP</CustomButton>
         </form>
-      </div>
+      </SignUpContainer>
     )
   }
 }
