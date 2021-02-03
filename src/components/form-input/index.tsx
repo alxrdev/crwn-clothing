@@ -1,6 +1,10 @@
 import React, { ChangeEventHandler } from 'react'
 
-import './styles.scss'
+import {
+  GroupContainer,
+  FormInputField,
+  FormInputLabel
+} from './styles'
 
 interface Props {
   type: string
@@ -12,12 +16,12 @@ interface Props {
 }
 
 const FormInput: React.FC<Props> = ({ handleChange, label, ...otherProps }) => (
-  <div className='group'>
-    <input className='form-input' onChange={handleChange} {...otherProps}/>
+  <GroupContainer>
+    <FormInputField onChange={handleChange} {...otherProps}/>
     {label ? (
-      <label className={`${otherProps.value.length ? 'shrink' : ''} form-input-label`}>{label}</label>
+      <FormInputLabel shrinkLabel={!!otherProps.value.length}>{label}</FormInputLabel>
     ) : null}
-  </div>
+  </GroupContainer>
 )
 
 export default FormInput
