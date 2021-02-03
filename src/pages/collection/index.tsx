@@ -8,7 +8,7 @@ import { Collection } from '../../redux/shop/types'
 
 import CollectionItem from '../../components/collection-item'
 
-import './styles.scss'
+import { CollectionPageContainer, CollectionItems } from './styles'
 
 interface RouterProps {
   collectionId: string
@@ -19,14 +19,14 @@ interface Props extends RouteComponentProps<RouterProps> {
 }
 
 const CollectionPage: React.FC<Props> = ({ collection }) => (
-  <div className='collection-page'>
+  <CollectionPageContainer>
     <h2>{ collection?.title }</h2>
-    <div className='items'>
+    <CollectionItems>
       {collection?.items.map(
         item => <CollectionItem key={item.id} item={item} />
       )}
-    </div>
-  </div>
+    </CollectionItems>
+  </CollectionPageContainer>
 )
 
 const mapStateToProps = (state: RootState, ownProps: Props) => ({
