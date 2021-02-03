@@ -6,8 +6,6 @@ import { Item } from '../../redux/types'
 import { CartActionTypes } from '../../redux/cart/types'
 import { addItem } from '../../redux/cart/actions'
 
-import CustomButton from '../custom-button'
-
 import {
   CollectionItemContainer,
   ItemImage,
