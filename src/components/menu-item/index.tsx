@@ -1,7 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
-import './styles.scss'
+import {
+  MenuItemContainer,
+  MenuBackgroundImage,
+  MenuItemContent,
+  MenuItemTitle,
+  MenuItemSubtitle
+} from './styles'
 
 interface Props {
   title: string
@@ -10,19 +15,14 @@ interface Props {
   linkUrl: string
 }
 
-const MenuItem: React.FC<Props> = ({ title, imageUrl, size, linkUrl }) => (
-  <Link to={linkUrl} className={`${size} menu-item`} >
-    <div
-      className='background-image'
-      style={{
-        backgroundImage: `url(${imageUrl})`
-      }}
-    />
-    <div className='content'>
-      <h1 className='title'>{title.toUpperCase()}</h1>
-      <span className='subtitle'>SHOP NOW</span>
-    </div>
-  </Link>
+const MenuItem: React.FC<Props> = ({ title, imageUrl, linkUrl, ...otherProps }) => (
+  <MenuItemContainer to={linkUrl} {...otherProps}>
+    <MenuBackgroundImage src={imageUrl} />
+    <MenuItemContent>
+      <MenuItemTitle>{title.toUpperCase()}</MenuItemTitle>
+      <MenuItemSubtitle>SHOP NOW</MenuItemSubtitle>
+    </MenuItemContent>
+  </MenuItemContainer>
 )
 
 export default MenuItem
