@@ -2,6 +2,8 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 
+import { Collection } from '../redux/shop/types'
+
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -38,6 +40,19 @@ export const createUserProfileDocument = async (userAuth: firebase.User | null, 
   }
 
   return userRef
+}
+
+export const addCollectionAndDocuments = async (collectionKey: string, objectsToAdd: any[] | null) => {
+  const collectionRef = firestore.collection(collectionKey)
+
+  const batch = firestore.batch()
+
+  objectsToAdd?.forEach((obj: Object) => {
+    const newDocRef = collectionRef.doc()
+    batch.set(newDocRef, obj)
+  })
+
+  return await batch.commit()
 }
 
 export const auth = firebase.auth()
