@@ -8,9 +8,16 @@ import { createStructuredSelector } from 'reselect'
 import { selectCartItems, selectCartTotal } from '../../redux/cart/selectors'
 
 import CheckoutItem from '../../components/checkout-item'
-import StripeButton from '../../components/stripe-button'
 
-import './styles.scss'
+import {
+  CheckoutPageContainer,
+  CheckoutPageHeader,
+  CheckoutPageHeaderBlock,
+  CheckoutPageTotal,
+  CheckoutPageWarning,
+  CheckoutPageButton
+} from './styles'
+import StripeButton from '../../components/stripe-button'
 
 interface Props {
   cartItems: Array<CartItem>
@@ -18,38 +25,41 @@ interface Props {
 }
 
 const CheckoutPage: React.FC<Props> = ({ cartItems, total }) => (
-  <div className='checkout-page'>
-    <div className='checkout-header'>
-      <div className='header-block'>
+  <CheckoutPageContainer>
+    <CheckoutPageHeader>
+      <CheckoutPageHeaderBlock>
         <span>Product</span>
-      </div>
-      <div className='header-block'>
+      </CheckoutPageHeaderBlock>
+      <CheckoutPageHeaderBlock>
         <span>Description</span>
-      </div>
-      <div className='header-block'>
+      </CheckoutPageHeaderBlock>
+      <CheckoutPageHeaderBlock>
         <span>Quantity</span>
-      </div>
-      <div className='header-block'>
+      </CheckoutPageHeaderBlock>
+      <CheckoutPageHeaderBlock>
         <span>Price</span>
-      </div>
-      <div className='header-block'>
+      </CheckoutPageHeaderBlock>
+      <CheckoutPageHeaderBlock>
         <span>Remove</span>
-      </div>
-    </div>
+      </CheckoutPageHeaderBlock>
+    </CheckoutPageHeader>
+
     {cartItems.map(cartItem => <CheckoutItem key={cartItem.item.id} cartItem={cartItem} />)}
 
-    <div className='total'>
+    <CheckoutPageTotal>
       <span>Total: ${total}</span>
-    </div>
+    </CheckoutPageTotal>
 
-    <div className='test-warning'>
+    <CheckoutPageWarning>
       *Please use the following test credit card for payments*
       <br />
       4242 4242 4242 4242 - Exp: 01/23 - CVV: 123
-    </div>
+    </CheckoutPageWarning>
 
-    <StripeButton price={total} />
-  </div>
+    <CheckoutPageButton>
+      <StripeButton price={total} />
+    </CheckoutPageButton>
+  </CheckoutPageContainer>
 )
 
 const mapStateToProps = createStructuredSelector<RootState, Props>({
