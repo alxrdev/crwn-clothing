@@ -7,12 +7,19 @@ export interface Collection {
   items: Array<Item>
 }
 
+export interface CollectionData {
+  [key: string]: Collection
+}
+
+export const UPDATE_COLLECTIONS = 'UPDATE_COLLECTIONS'
+
 export interface ShopState {
-  collections: { [key: string]: Collection }
+  collections: CollectionData
 }
 
-export interface DefaultAction {
-  type: string
+export interface UpdateCollections {
+  type: typeof UPDATE_COLLECTIONS
+  payload: CollectionData
 }
 
-export type ShopActionTypes = DefaultAction
+export type ShopActionTypes = UpdateCollections
