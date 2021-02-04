@@ -4,10 +4,8 @@ import {
   UPDATE_COLLECTIONS
 } from './types'
 
-import SHOP_DATA from './data'
-
 const INITIAL_STATE: ShopState = {
-  collections: SHOP_DATA
+  collections: {}
 }
 
 const shopReducer = (state = INITIAL_STATE, action: ShopActionTypes): ShopState => {
