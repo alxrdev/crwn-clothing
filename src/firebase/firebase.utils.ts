@@ -2,6 +2,8 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 
+import { CollectionData } from '../redux/shop/types'
+
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -51,6 +53,24 @@ export const addCollectionAndDocuments = async (collectionKey: string, objectsTo
   })
 
   return await batch.commit()
+}
+
+export const convertCollectionsSnapshotToMap = (collections: any) : CollectionData => {
+  const transformedCollection = collections.docs.map((doc: any) => {
+    const { title, items } = doc.data()
+
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items
+    }
+  })
+
+  return transformedCollection.reduce((accumulator: CollectionData, collection: any) => {
+    accumulator[collection.title.toLowerCase()] = collection
+    return accumulator;
+  }, {})
 }
 
 export const auth = firebase.auth()
