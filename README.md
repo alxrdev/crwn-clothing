@@ -46,8 +46,10 @@ Technologies that I used to develop this project
 
 - [ReactJS](https://reactjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
+- [Styled Components](https://github.com/styled-components/styled-components)
 - [Firebase](https://firebase.google.com/)
 - [Redux](https://redux.js.org/)
+- [Redux Thunk](https://github.com/reduxjs/redux-thunk)
 - [Redux Persist](https://github.com/rt2zz/redux-persist)
 - [Redux Reselect](https://github.com/reduxjs/reselect)
 - [React Router DOM](https://reacttraining.com/react-router/)
